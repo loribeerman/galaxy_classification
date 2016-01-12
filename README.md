@@ -1,5 +1,12 @@
 # Classifying Galaxies in the Sloan Digital Sky Survey
 
-![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+Spiral Galaxy             |  Elliptical Galaxy
+:-------------------------:|:-------------------------:
+![](./images/img_587724649793716359.png)  |  ![](./images/img_587730848498712762.png)
+
+
+
+
+
+
