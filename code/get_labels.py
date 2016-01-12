@@ -20,7 +20,7 @@ def get_labels(gal_set, spiral, elliptical, uncertain, img_arr):
 
 def get_label_1D(label_arr):
     '''creates classification label from column information in 3D label array
-    goes from n x 3 array to n x 1
+    goes from n_image x 3 array to n_image x 1
     1, 0, 0 becomes 0
     0, 1, 0 becomes 1
     0, 0, 1 becomes 2'''
