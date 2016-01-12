@@ -31,7 +31,7 @@ def get_pix_flat_cen(filename):
 
     return cen_arr
 
-
+33
 def get_pix_3d(filename):
     '''get pixels values for RGB from one image and read in as a 3D numpy array'''
 

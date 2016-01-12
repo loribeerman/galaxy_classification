@@ -19,8 +19,7 @@ def plot_confusion_matrix(cm, title='Confusion Matrix', target_names=['spiral', 
     '''plot confusion matrix -- predicted label vs actual label classifications
     input:  confusion matrix, 3 x 3 array
     output:  confusion_matrix.png'''
-    
-    np.set_printoptions(precision=2)
+
     if normed:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
@@ -32,23 +31,7 @@ def plot_confusion_matrix(cm, title='Confusion Matrix', target_names=['spiral', 
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.grid('off')
     plt.savefig('confusion_matrix.png')
-
-
-def plot_ROC_curve(sp_tpr, sp_fpr, ell_tpr, ell_fpr, unc_tpr, unc_fpr):
-    '''plot ROC curves for spiral, elliptical, and uncertain classifications on one plot
-    inputs:  true positive and false positive arrays for each classification
-    output:  ROC_curve.png'''
-
-    plt.plot([0, 1], [0, 1], 'k--')
-    plt.plot(sp_fpr, sp_tpr, linewidth=2, label = 'Spiral')
-    plt.plot(ell_fpr, ell_tpr, linewidth=2, label = 'Elliptical')
-    plt.plot(unc_fpr, unc_tpr, linewidth=2, label = 'Uncertain')
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.legend(loc='lower right')
-    plt.savefig('ROC_curve.png')
 
 
 def plot_thresh(thresh_arr, spiral, ell, tot, label='accuracy'):
@@ -63,6 +46,4 @@ def plot_thresh(thresh_arr, spiral, ell, tot, label='accuracy'):
     plt.ylabel(label)
     plt.legend(loc='upper left')
     plt.savefig(label + '_thresh.png')
-
-
 
