@@ -31,3 +31,18 @@ if __name__ == '__main__':
     # only take center 10000 pixels
     num_pix_cen = 10000
     make_img_arr(gal_set20, num_pix_cen, pix_func=read_images.get_pix_flat_cen)
+
+
+    # script to run whole NN
+
+
+
+
+# calc_y_act became get_label_1D in get_labels.py
+get_label_1D(y_test20)
+
+
+#calc thresholds starting with # loop over high prob values
+max_prob = np.max(probas, axis=1)
+thresh_arr = np.arange(0.1, 0.9, 0.05)
+spiral_acc = np.zeros(len(thresh_arr))

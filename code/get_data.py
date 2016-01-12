@@ -25,7 +25,7 @@ def create_url(ra, dec):
 def create_outfile(gal_id):
 	'''create name of outfile to save image to'''
 
-	outfile = "images/img_{0}.png".format(gal_id)
+	outfile = "../images/img_{0}.png".format(gal_id)
 	return outfile
 
 
@@ -48,6 +48,7 @@ def plot_img(img):
 
 if __name__ == '__main__':
 	gal_id, ra, dec = read_galaxy_table('gal_pos_label.txt')
+	# get images in the range 32000 to 35000 -- can make this an argument
 	for i in range(32000, 35000):
 		url = create_url(ra[i], dec[i])
 		outfile = create_outfile(gal_id[i])

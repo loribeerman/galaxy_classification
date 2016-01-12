@@ -1,5 +1,7 @@
 import numpy as np
 
+''' tried to subtract bg to improve model accuracy, but this is not part of the pipeline'''
+
 
 def bg_subtract(img_arr):
 	'''subtract average of background (10 pixels at each corner) from 1D image array'''

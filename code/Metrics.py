@@ -21,6 +21,7 @@ def calc_acc(y_pred, y_test):
 def calc_cm(probas, y_act):
     '''calculates values for confusion matrix from probas and y_act arrays
     input:  probas, an n_image x 3 array of probability values
+    ***not prob array here
     input:  y_act, an n_image x 1 array of the actual label values
     outputs:  floats of spiral_acc, ell_acc, spiral_recall, ell_recall, spiral_prec, ell_prec'''
     
@@ -61,8 +62,8 @@ def cm_to_metrics(cm):
     tn_spiral = cm[1][1] + cm[1][2] + cm[2][1] + cm[2][2]
     tp_ell = cm[1][1]
     tn_ell = cm[0][0] + cm[0][2] + cm[2][0] + cm[2][2]
-    tp_unc = cm[2][2]
-    tn_unc = cm[0][0] + cm[0][1] + cm[1][0] + cm[1][1]
+    tp_unc = cm[2][2]   # not used
+    tn_unc = cm[0][0] + cm[0][1] + cm[1][0] + cm[1][1] #not used
     fn_spiral = cm[0][1] + cm[0][2]
     fn_ell = cm[1][0] + cm[1][2]
     fp_spiral = cm[1][0] + cm[2][0]

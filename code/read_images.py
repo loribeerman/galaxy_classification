@@ -52,6 +52,7 @@ def make_img_arr(gal_set, n_pix, pix_func=get_pix):
     '''create image array for subset -- will have n_img rows and n_pix columns
     inputs:
     gal_set is an array of galaxy IDs
+    ***rename gal_set
     n_pix is the number of pixels we want to include from each image'''
 
     img_arr = np.zeros((len(gal_set), n_pix))
