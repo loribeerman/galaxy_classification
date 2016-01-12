@@ -4,6 +4,39 @@ import os
 '''read in categories of classifications and copy images for each classification to a different subdirectory'''
 
 
+def create_category_arr(y_act, y_pred, gal_arr, idx):
+    ''' Create and save arrays of gal_IDs that are part of that category
+    '''
+
+    # true spirals predicted correctly
+    true_spiral = np.where((y_act == 0) & (y_pred == 0))
+    np.savetxt('true_spiral.txt', gal_arr[idx[true_spiral]], fmt='%18d')
+    # true ellipticals predicted correctly
+    true_ell = np.where((y_act == 1) & (y_pred == 1))
+    np.savetxt('true_ell.txt', gal_arr[idx[true_ell]], fmt='%18d')
+    # true uncertain predicted correctly
+    true_unc = np.where((y_act == 2) & (y_pred ==2))
+    np.savetxt('true_unc.txt', gal_arr[idx[true_unc]], fmt='%18d')
+    # true spirals predicted as ellipticals
+    spiral_pred_ell = np.where((y_act == 0) & (y_pred == 1))
+    np.savetxt('spiral_pred_ell.txt', gal_arr[idx[spiral_pred_ell]], fmt='%18d')
+    # true spirals predicted as uncertain
+    spiral_pred_unc = np.where((y_act == 0) & (y_pred == 2))
+    np.savetxt('spiral_pred_unc.txt', gal_arr[idx[spiral_pred_unc]], fmt='%18d')
+    # true elliptical predicted as spiral
+    ell_pred_spiral = np.where((y_act == 1) & (y_pred == 0))
+    np.savetxt('ell_pred_spiral.txt', gal_arr[idx[ell_pred_spiral]], fmt='%18d')
+    # true elliptical predicted as uncertain
+    ell_pred_unc = np.where((y_act == 1) & (y_pred == 2))
+    np.savetxt('ell_pred_unc.txt', gal_arr[idx[ell_pred_unc]], fmt='%18d')
+    # true uncertain predicted as spiral
+    unc_pred_spiral = np.where((y_act == 2) & (y_pred == 0))
+    np.savetxt('unc_pred_spiral.txt', gal_arr[idx[unc_pred_spiral]], fmt='%18d')
+    # true uncertain predicted as elliptical
+    unc_pred_ell = np.where((y_act == 2) & (y_pred == 1))
+    np.savetxt('unc_pred_ell.txt', gal_arr[idx[unc_pred_ell]], fmt='%18d')
+
+
 def get_ID(filename):
     '''read galaxy IDs from filename and store as array of strings'''
 

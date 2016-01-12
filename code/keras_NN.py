@@ -95,10 +95,20 @@ if __name__ == '__main__':
     unc_fpr, unc_tpr, _ = roc_curve(y_test20[:,2], probas[:,2])
     # Plot ROC curves
     plots.plot_ROC_curve(sp_tpr, sp_fpr, ell_tpr, ell_fpr, unc_tpr, unc_fpr)
+    # Print AUC scores
+    print "AUC for spirals:"
+    roc_auc_score(y_test[:,0], probas[:,0])  
+    print "AUC for ellipticals:"
+    roc_auc_score(y_test[:,0], probas[:,1])    
+    print "AUC for uncertain:"
+    roc_auc_score(y_test[:,0], probas[:,2])
+
+    # Save predicted probabilities
+    np.savetxt('gal_probas.txt', probas, fmt='%1.3f')
+    # Make categories of predictions and save these gal IDs
+    create_category.create_category_arr(y_act, y_pred_test, gal_arr, idx_test)
+    # Save files to appropriate subdirectories
+    create_category.main()
 
 
-
-#calc thresholds starting with # loop over high prob values
-max_prob = np.max(probas, axis=1)
-thresh_arr = np.arange(0.1, 0.9, 0.05)
-spiral_acc = np.zeros(len(thresh_arr))
+ 
