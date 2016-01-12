@@ -18,3 +18,20 @@ def get_labels(gal_set, spiral, elliptical, uncertain, img_arr):
     return label_arr
 
 
+def get_label_1D(label_arr):
+    '''creates classification label from column information in 3D label array
+    goes from n x 3 array to n x 1
+    1, 0, 0 becomes 0
+    0, 1, 0 becomes 1
+    0, 0, 1 becomes 2'''
+    
+    y_act = np.zeros(len(label_arr))
+    for i in range(len(label_arr)):
+        if label_arr[i][0] == 1:
+            y_act[i] = 0
+        elif label_arr[i][1] == 1:
+            y_act[i] = 1
+        elif label_arr[i][2] == 1:
+            y_act[i] = 2
+                
+    return y_act
