@@ -23,7 +23,7 @@ I classified 20,000 of the brightest and largest galaxies from SDSS (Alam et al.
 ##Model
 Neural networks are often used for image classification. theano (http://deeplearning.net/software/theano/) is a neural network implementation in Python which can be used for image classification. I used this neural network implementation to classify SDSS galaxies. I trained the neural network using the GalaxyZoo classifications, while leaving out a fraction of the data as the test set. I then tested the accuracy of the neural network predictions based on the results from the GalaxyZoo classifications. Since the time to train the neural network can become lengthy, I trained this network using an AWS GPU instance, which is better suited to training neural networks on images.
 
-![](./images/neural_network_model.png =420x300)
+![](./images/neural_network_model.png)
 
 ##Results
 
