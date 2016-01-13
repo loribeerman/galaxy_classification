@@ -14,7 +14,7 @@ import get_labels
 import Metrics
 import Plots
 
-'''Create neural net with keras and fit it to data (use final model)
+''' Main pipeline script for creating neural net with keras and fitting it to image data
 output predictions for input data'''
 
 
