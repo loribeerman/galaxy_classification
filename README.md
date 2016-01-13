@@ -16,8 +16,7 @@ Galaxy classification has long been vital to understanding of how galaxies form 
 
 
 ##Data
-I classified 20,000 of the brightest and largest galaxies from SDSS (Alam et al. 2015) and compared them to the classifications that were generated from GalaxyZoo (Lintott et al. 2011). I will write SQL queries using the SDSS skyserver site (http://skyserver.sdss.org/) which will give me the position on the sky and object id for these objects, along with the GalaxyZoo label classification. Using these sky positions, I will be scraping the sky server site for the images of each galaxy, with which I can specify the image size (http://skyservice.pha.jhu.edu/DR10/ImgCutout/getjpeg.aspx). Initial testing shows a size of 200x200 pixels gives a nice centered image of most of the galaxies in my target sample. The scraping will save these images as .png files, which I will then convert to numpy arrays using scipy. The resulting size of each RGB image is (200, 200, 3). See Figure 2 below for two example images.
-I plan on initially classifying the images according to the top level of the Galaxy Zoo decision tree (Figure 3), which is: smooth, features or disk, and star or artifact. I can then add increasingly more complex classifications if this performs well, such as elliptical, clockwise spiral, anti-clockwise spiral, edge-on, star/don’t know, or merger. The next step after this would be to incorporate more galactic features such as bars and dust lanes, and add in smaller and fainter galaxies.
+I classified 20,000 of the brightest and largest galaxies from SDSS (Alam et al. 2015) and compared them to the classifications that were generated from GalaxyZoo (Lintott et al. 2011). I scraped the SDSS skyserver website to obtain these images, which were 200 x 200 x 200 pixels.
 
 
 ##Model
@@ -27,6 +26,22 @@ Neural networks are often used for image classification. theano (http://deeplear
 
 ##Results
 
+Can look at several metrics to determine performance of model.  
+overall accuracy on test data is 66%, while random guessing among the 3 categories would give 33% accuracy.
+The confusion matrix shows predicted label vs true label, and is darker where more classifications are, we can see it usually does a good job, and that the model does especially well at separating spirals and ellipticals.
+
+![](./images/confusion_matrix.png)
+
+This ROC curve is made by treating each classifier as binary:  e.g. is it spiral or not spiral.  The AUC is largest for the elliptical classification at 0.92, the next highest is for spiral, and uncertain is lowest.
+
+![](./images/roc_curve.png)
+
+
+The model also gives a probability for each galaxy that it is in each classification.  This visualization shows typical galaxies for various probabilities from the model.  This shows that high prob galaxies have very distinct morphologies and look like classic ell and spirals, the typical uncertain galaxy appears smaller on the image, likely due to distance, and appears similar to lenticular galaxies. this area is where most of the misclassifications come from, and even visually, it is harder to tell what type of galaxy it is, some are transitioning from spiral to elliptical.  some of the labels may be wrong
+We see that I can likely get even better accuracies by looking at only the galaxies with high probabilities.
+When I restrict the sample to only high prob spirals, the accuracy of correctly identifying spiral galaxies is 77%, ell is…
+
+![](./images/galaxy_triangle.png)
 
 
 ##Future Work
