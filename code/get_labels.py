@@ -2,8 +2,7 @@ import numpy as np
 
 
 def get_labels(gal_arr, spiral, elliptical, uncertain, img_arr):
-
-    '''code to get label array for subset of data
+    '''get label array for subset of data
     label array will have n_rows and 1 columns for each label:  spiral, elliptical, uncertain
     gal_arr is subset of array of gal IDs, img_arr is array of image pixels having length = number of images in gal_arr
     spiral, elliptical, and uncertain are arrays containing 1 or 0'''
